@@ -16,6 +16,7 @@ $(document).ready(function() {
 
 
   $("form#pigLatin").submit(function(event) {
+    hasNumber = false;
     userInput = $("#userInput").val()
     testString4Numbers(userInput);
     if ( hasNumber ) {
