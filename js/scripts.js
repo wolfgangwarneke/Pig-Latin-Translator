@@ -2,6 +2,11 @@ var hasNumber;
 var userInput;
 var arrayFromString;
 var output;
+var vowels = ["a","e","i","o","u"];
+
+Array.min = function( array ){
+    return Math.min.apply( Math, array );
+};
 
 function testString4Numbers(string) {
   arrayFromString = string.split('');
@@ -11,39 +16,44 @@ function testString4Numbers(string) {
     }
   });
 }
-function isVowel(character) {
-  var char = character;
-  var isItTrue;
-  var vowels = ["a","e","i","o","u"];
-  vowels.forEach(function(vowel) {
-    if (char.toLowerCase() === vowel) {
-      isItTrue = true;
-    }
-  });
-  return isItTrue;
-}
-
 
 function toPigLatin(string) {
    if ( isVowel(arrayFromString[0]) ) {
     output = arrayFromString.join('');
     output += "ay";
   } else {
-    arrayFromString.push(arrayFromString.shift());
+    var vowelIndexVals = [];
+    var thisIndex;
+    var smallestValue;
+    vowels.forEach(function(vowel) {
+      thisIndex = arrayFromString.indexOf(vowel, 1);
+      if ( thisIndex != -1 ) {
+        vowelIndexVals.push(thisIndex);
+      }
+    });
+    smallestValue = Array.min(vowelIndexVals);
+    arrayFromString.push(arrayFromString.splice(0, smallestValue).join(''));
     output = arrayFromString.join('');
     output += "ay";
   }
   return output;
 }
 
+function isVowel(character) {
+  var isItTrue;
+  vowels.forEach(function(vowel) {
+    if (character.toLowerCase() === vowel) {
+      isItTrue = true;
+    }
+  });
+  return isItTrue;
+}
 
 $(document).ready(function() {
 
-
   $("form#pigLatin").submit(function(event) {
     hasNumber = false;
-    userInput = $("#userInput").val()
-    testString4Numbers(userInput);
+    testString4Numbers($("#userInput").val());
     if ( hasNumber || userInput === "") {
       alert('Not cool.');
     } else {
