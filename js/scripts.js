@@ -25,14 +25,17 @@ function isVowel(character) {
   return isIt;
 }
 
+
 function toPigLatin(string) {
    if ( isVowel(arrayFromString[0]) ) {
-    arrayFromString.push(arrayFromString.shift());
     output = arrayFromString.join('');
     output += "ay";
     console.log(output);
   } else {
-    alert('this does not start with a vowel');
+    arrayFromString.push(arrayFromString.shift());
+    output = arrayFromString.join('');
+    output += "ay";
+    console.log(output);
   }
 }
 
