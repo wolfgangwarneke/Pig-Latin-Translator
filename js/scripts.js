@@ -11,7 +11,7 @@ Array.min = function( array ){
 
 function testString4Numbers(string) {
   arrayFromString = string.split('');
-  wordArray = string.split(" ");
+
   arrayFromString.forEach(function(character) {
     if ( parseInt(character) ) {
       hasNumber = true;
@@ -61,16 +61,17 @@ function isVowel(character) {
 $(document).ready(function() {
 
   $("form#pigLatin").submit(function(event) {
-    hasNumber = false;
-    testString4Numbers($("#userInput").val());
-    if ( hasNumber || userInput === "") {
-      alert('Not cool.');
-    } else {
-      wordArray.forEach(function(word) {
-        $("#result").append(toPigLatin(word));
-      });
+    wordArray = $("#userInput").val().split(" ");
+    wordArray.forEach(function(word) {
+      hasNumber = false;
+      testString4Numbers(word);
+      if ( hasNumber || userInput === "") {
+        alert('Not cool.');
+      } else {
 
-    }
+          $("#result").append("<h1>" + toPigLatin(userInput) + "</h1>");
+      }
+    });
 
     event.preventDefault();
   });
