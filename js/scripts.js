@@ -32,7 +32,14 @@ function toPigLatin(string) {
       }
     });
     smallestValue = Array.min(vowelIndexVals);
-    arrayFromString.push(arrayFromString.splice(0, smallestValue).join(''));
+    for (i=0; i < smallestValue; i++) {
+      arrayFromString.push(arrayFromString.splice(0, 1).join(''));
+    }
+    if ((arrayFromString[0] === "u")  && (arrayFromString[arrayFromString.length-1] === 'q')) {
+      arrayFromString.push(arrayFromString.splice(0, (arrayFromString.indexOf('u'))+1).join(''));
+      }
+    if ( true ) {
+    }
     output = arrayFromString.join('');
     output += "ay";
   }
