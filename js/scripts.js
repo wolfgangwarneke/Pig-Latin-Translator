@@ -1,8 +1,9 @@
 var onlyLetters;
 var hasNumber;
 var userInput;
+var  arrayFromString;
 function testString4Numbers(string) {
-  var arrayFromString = string.split('');
+  arrayFromString = string.split('');
   arrayFromString.forEach(function(character) {
     if ( parseInt(character) ) {
       hasNumber = true;
@@ -11,6 +12,24 @@ function testString4Numbers(string) {
     }
   });
 }
+function isVowel(character) {
+  var char = character;
+  var isIt;
+  var vowels = ["a","e","i","o","u"];
+  vowels.forEach(function(vowel) {
+    if (char.toLowerCase() === vowel) {
+      isIt = true;
+    }
+  });
+  return isIt;
+}
+
+function toPigLatin(string) {
+   if ( isVowel(arrayFromString[0]) ) {
+    alert('this starts with a vowel');
+   }
+}
+
 
 $(document).ready(function() {
 
@@ -19,10 +38,10 @@ $(document).ready(function() {
     hasNumber = false;
     userInput = $("#userInput").val()
     testString4Numbers(userInput);
-    if ( hasNumber ) {
-      alert('Has numbers.  We don\'t want that');
+    if ( hasNumber || userInput === "") {
+      alert('Not cool.');
     } else {
-      alert('Doesn\'t have numbers');
+      toPigLatin(userInput);
     }
     event.preventDefault();
   });
