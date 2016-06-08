@@ -1,28 +1,26 @@
-var onlyLetters;
 var hasNumber;
 var userInput;
-var  arrayFromString;
+var arrayFromString;
 var output;
+
 function testString4Numbers(string) {
   arrayFromString = string.split('');
   arrayFromString.forEach(function(character) {
     if ( parseInt(character) ) {
       hasNumber = true;
-    } else {
-      onlyLetters = true;
     }
   });
 }
 function isVowel(character) {
   var char = character;
-  var isIt;
+  var isItTrue;
   var vowels = ["a","e","i","o","u"];
   vowels.forEach(function(vowel) {
     if (char.toLowerCase() === vowel) {
-      isIt = true;
+      isItTrue = true;
     }
   });
-  return isIt;
+  return isItTrue;
 }
 
 
