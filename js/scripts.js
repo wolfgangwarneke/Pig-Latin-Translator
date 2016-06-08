@@ -1,5 +1,6 @@
 var hasNumber;
 var userInput;
+var wordArray;
 var arrayFromString;
 var output;
 var vowels = ["a","e","i","o","u"];
@@ -10,6 +11,7 @@ Array.min = function( array ){
 
 function testString4Numbers(string) {
   arrayFromString = string.split('');
+  wordArray = string.split(" ");
   arrayFromString.forEach(function(character) {
     if ( parseInt(character) ) {
       hasNumber = true;
@@ -64,7 +66,10 @@ $(document).ready(function() {
     if ( hasNumber || userInput === "") {
       alert('Not cool.');
     } else {
-      $("#result").html("<h1>" + toPigLatin(userInput) + "</h1>");
+      wordArray.forEach(function(word) {
+        $("#result").append(toPigLatin(word));
+      });
+
     }
 
     event.preventDefault();
