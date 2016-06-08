@@ -2,6 +2,7 @@ var onlyLetters;
 var hasNumber;
 var userInput;
 var  arrayFromString;
+var output;
 function testString4Numbers(string) {
   arrayFromString = string.split('');
   arrayFromString.forEach(function(character) {
@@ -26,8 +27,13 @@ function isVowel(character) {
 
 function toPigLatin(string) {
    if ( isVowel(arrayFromString[0]) ) {
-    alert('this starts with a vowel');
-   }
+    arrayFromString.push(arrayFromString.shift());
+    output = arrayFromString.join('');
+    output += "ay";
+    console.log(output);
+  } else {
+    alert('this does not start with a vowel');
+  }
 }
 
 
