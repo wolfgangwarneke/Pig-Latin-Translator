@@ -28,13 +28,12 @@ function toPigLatin(string) {
    if ( isVowel(arrayFromString[0]) ) {
     output = arrayFromString.join('');
     output += "ay";
-    console.log(output);
   } else {
     arrayFromString.push(arrayFromString.shift());
     output = arrayFromString.join('');
     output += "ay";
-    console.log(output);
   }
+  return output;
 }
 
 
@@ -48,8 +47,9 @@ $(document).ready(function() {
     if ( hasNumber || userInput === "") {
       alert('Not cool.');
     } else {
-      toPigLatin(userInput);
+      $("#result").html("<h1>" + toPigLatin(userInput) + "</h1>");
     }
+
     event.preventDefault();
   });
 });
