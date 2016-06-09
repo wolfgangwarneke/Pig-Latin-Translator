@@ -3,12 +3,14 @@ var userInput;
 var arrayFromString;
 var output;
 var vowels = ["a","e","i","o","u"];
+var wordsArray;
 
 Array.min = function( array ){
     return Math.min.apply( Math, array );
 };
 
 function testString4Numbers(string) {
+  wordsArray = string.split(' ');
   arrayFromString = string.split('');
   arrayFromString.forEach(function(character) {
     if ( parseInt(character) ) {
@@ -17,8 +19,11 @@ function testString4Numbers(string) {
   });
 }
 
+
+
 function toPigLatin(string) {
-   if ( isVowel(arrayFromString[0]) ) {
+  arrayFromString = string.split('');
+  if ( isVowel(arrayFromString[0]) ) {
     output = arrayFromString.join('');
     output += "ay";
   } else {
@@ -59,12 +64,31 @@ function isVowel(character) {
 $(document).ready(function() {
 
   $("form#pigLatin").submit(function(event) {
+    $('#result p').empty();
     hasNumber = false;
     testString4Numbers($("#userInput").val());
     if ( hasNumber || userInput === "") {
       alert('Not cool.');
     } else {
-      $("#result").html("<h1>" + toPigLatin(userInput) + "</h1>");
+        if (wordsArray.length > 0) {
+          $("#result p").append(toPigLatin(wordsArray.shift()) + " ");
+        }
+        if (wordsArray.length > 0) {
+          $("#result p").append(toPigLatin(wordsArray.shift()) + " ");
+        }
+        if (wordsArray.length > 0) {
+          $("#result p").append(toPigLatin(wordsArray.shift()) + " ");
+        }
+        if (wordsArray.length > 0) {
+          $("#result p").append(toPigLatin(wordsArray.shift()) + " ");
+        }
+        if (wordsArray.length > 0) {
+          $("#result p").append(toPigLatin(wordsArray.shift()) + " ");
+        }
+        if (wordsArray.length > 0) {
+          $("#result p").append(toPigLatin(wordsArray.shift()) + " ");
+        }
+        
     }
 
     event.preventDefault();
